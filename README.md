@@ -1,2 +1,2 @@
 # Mustad lamp
-Python Flask app for controlling rgb led
+Python Flask microapp for controlling rgb led
