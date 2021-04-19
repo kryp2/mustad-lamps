@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mustad lampe</title>
+    {% if title %}
+    <title>{{ title }} - Mustad lampa</title>
+    {% else %}
+    <title>Mustad lampa</title>
+    {% endif %}
+</head>
+<body>
+    <h1>Mustad lampa</h1>
+    <nav>
+        <ul>
+            <li><a href="/index">Introduksjon</a></li>
+            <li><a href="/arduino">Arduino</a></li>
+            <li><a href="/pick_color">Farge velger</a></li>
+            <li><a href="/hex_color">Hex farge</a></li>
+            <li><a href="/rgb_color">RGB farge</a></li>
+        </ul>
+    </nav>
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,1 @@
+FLASK_APP=mustad_light.py

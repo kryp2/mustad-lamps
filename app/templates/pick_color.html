@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Pick Color</h2>
+<p>Endre lyset på lampa ved å skrive inn en hex verdi</p>
+<form action="" method="post" novalidate>
+    {{ form.hidden_tag() }}
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}
