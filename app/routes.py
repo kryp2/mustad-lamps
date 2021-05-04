@@ -1,7 +1,8 @@
 from flask import render_template
 from app import app, board, lamp1
-from app.forms import ConnectionForm, HexForm, PickColorForm
-from app.arduino import set_hexcolor
+from app.forms import HexForm
+from app.arduino import set_hexcolor, set_blink
+
 
 from pymata4 import pymata4
 
@@ -10,22 +11,17 @@ from pymata4 import pymata4
 def index():
     return render_template('index.html', title='Home')
 
-@app.route('/arduino', methods=['GET', 'POST'])
-def arduino():
-    form = ConnectionForm()
-    if form.validate_on_submit():
-        print("yes")
-    return render_template('arduino.html', title='Arduino', form=form)
-
 @app.route('/pick_color', methods=['GET', 'POST'])
-def pick_color():
-    form = PickColorForm()
-    return render_template('pick_color.html', title='Farge velger', form=form)
-
-
-@app.route('/hex_color', methods=['GET', 'POST'])
 def hex_color():
     form = HexForm()
     if form.validate_on_submit():
-        set_hexcolor(board, lamp1, form.hexcolor.data)
-    return render_template('hex_color.html', title='Hex Farge', form=form)
+        if form.blink.data == True:
+            set_blink(board, lamp1, form.hexcolor.data)
+        else:
+            set_hexcolor(board, lamp1, form.hexcolor.data)
+    return render_template('pick_color.html', title='Fargevelger', form=form)
+
+@app.route('/api/<string:api_hex_color>', methods=['GET', 'POST'])
+def hex_color_api(api_hex_color):
+    set_hexcolor(board, lamp1, api_hex_color)
+    return f'The color is changed to {api_hex_color}'

@@ -10,18 +10,19 @@
     {% else %}
     <title>Mustad lampa</title>
     {% endif %}
+    <script src="{{ url_for('static', filename='js/semantic.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/html5kellycolorpicker.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/semantic.css') }}"/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}"/>
 </head>
 <body>
     <h1>Mustad lampa</h1>
-    <nav>
-        <ul>
-            <li><a href="/index">Introduksjon</a></li>
-            <li><a href="/arduino">Arduino</a></li>
-            <li><a href="/pick_color">Farge velger</a></li>
-            <li><a href="/hex_color">Hex farge</a></li>
-            <li><a href="/rgb_color">RGB farge</a></li>
-        </ul>
-    </nav>
-    {% block content %}{% endblock %}
+    <div class="ui pointing menu">
+        <a class="item {% if title == 'Home'%}active{% endif%}" href="/index">Introduksjon</a>
+        <a class="item {% if title == 'Fargevelger'%}active{% endif%}" href="/pick_color">Fargevelger</a>
+      </div>
+    <div class="ui segment">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

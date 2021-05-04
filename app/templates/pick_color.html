@@ -1,10 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h2>Pick Color</h2>
+<h2>Hex Farge</h2>
 <p>Endre lyset på lampa ved å skrive inn en hex verdi</p>
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
+    <p>
+        {{ form.hexcolor.label }}<br>
+        <canvas id="picker"></canvas><br>
+        {{ form.hexcolor(size=7) }}<br>
+        {{ form.blink.label }}<br>
+        {{ form.blink }}
+    </p>
     <p>{{ form.submit() }}</p>
 </form>
+<script>
+    new KellyColorPicker({place : 'picker', input : 'color', size : 250});
+  </script>
 {% endblock %}

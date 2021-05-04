@@ -1,1 +1,10 @@
 {% extends "base.html" %}
+
+{% block content %}
+<h2>Introduksjon</h2>
+<p>Dette er en simpel applikasjon for å endre farge på RGB LED på tilkoblet Arduino. Det finnes to funksjoner:</p>
+<h3>Endre farge med fargevelger</h3>
+<p>Trykk på "farge velger" i menyen og velg ønsket farge</p>
+<h3>Endre farge med url</h3>
+<p>Eksempel: 127.0.0.1:5000/api/00509e, dette endrer farge til #00509e. Eventuelt kan curl også brukes: curl 127.0.0.1:5000/api/00509e</p>
+{% endblock %}

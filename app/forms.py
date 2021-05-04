@@ -1,14 +1,10 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, BooleanField, Form
 from wtforms.validators import DataRequired
 
-class ConnectionForm(FlaskForm):
-    submit = SubmitField('Open')
-
 class HexForm(FlaskForm):
-    hexcolor = StringField('Hex verdi', validators=[DataRequired()])
+    hexcolor = StringField('Hex verdi', validators=[DataRequired()], id='color', default='#00509e')
     submit = SubmitField('Bytt farge')
+    blink = BooleanField('Blink')
 
-class PickColorForm(FlaskForm):
-    red = SubmitField('Red')
-    ntnublue = SubmitField('NTNU Blue')
+
